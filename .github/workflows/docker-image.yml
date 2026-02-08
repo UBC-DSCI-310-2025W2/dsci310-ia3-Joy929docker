@@ -2,8 +2,10 @@ name: Docker image
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
+    branches: [ "main" ]
+
+env:
+  IMAGE_NAME: dsci310-ia3-joy929-docker
 
 jobs:
   build-and-push:
@@ -24,5 +26,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/dsci310-ia3-joy929-docker:0.1.1
-            ${{ secrets.DOCKER_USERNAME }}/dsci310-ia3-joy929-docker:latest
+            ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:0.1.1
+            ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+
